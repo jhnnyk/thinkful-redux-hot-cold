@@ -1,10 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { restartGame } from "../actions/index";
+import { restartGame } from "../actions";
 
 import "./top-nav.css";
-
-console.log("restart game", restartGame);
 
 export function TopNav(props) {
   return (
@@ -20,8 +18,8 @@ export function TopNav(props) {
             href="#feedback"
             className="new"
             aria-label="Start a new game"
-            onClick={() => {
-              console.log("hello", restartGame);
+            onClick={e => {
+              e.preventDefault();
               props.dispatch(restartGame());
             }}
           >

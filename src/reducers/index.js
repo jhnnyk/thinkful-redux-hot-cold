@@ -14,6 +14,11 @@ export const gameReducer = (state = initialState, action) => {
         ...initialState,
         correctAnswer: Math.floor(Math.random() * 100) + 1
       };
+    case actions.MAKE_GUESS:
+      return {
+        ...state,
+        guesses: [...state.guesses, action.guess]
+      };
     default:
       return state;
   }
