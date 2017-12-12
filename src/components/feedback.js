@@ -9,7 +9,7 @@ export function Feedback(props) {
    * as a DOM change, even when a guess does not change the feedback text.
    * This is necessary for consistent aural feedback via aria-live.
    */
-  const key = props.guessCount;
+  const key = props.guesses.length;
 
   let guessAgain;
   if (key !== 0) {

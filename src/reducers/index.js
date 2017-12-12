@@ -14,6 +14,22 @@ export const gameReducer = (state = initialState, action) => {
         ...initialState,
         correctAnswer: Math.floor(Math.random() * 100) + 1
       };
+    case actions.GENERATE_AURAL_UPDATE:
+      const pluralize = state.guesses.length !== 1;
+
+      let auralStatus = `Here's the status of the game right now: ${
+        state.feedback
+      } You've made ${state.guesses.length} ${
+        pluralize ? "guesses" : "guess"
+      }.`;
+
+      if (state.guesses.length > 0) {
+        auralStatus += ` ${
+          pluralize ? "In order of most- to least-recent, they are" : "It was"
+        }: ${state.guesses.reverse().join(", ")}`;
+      }
+
+      return { ...state, auralStatus: auralStatus };
     case actions.MAKE_GUESS:
       const guess = parseInt(action.guess, 10);
       if (isNaN(guess)) {
